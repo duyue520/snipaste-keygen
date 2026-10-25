@@ -48,11 +48,11 @@ VA 0x14024B880  文件偏移 0x24AC80
 
 特征码：`0F B6 D8 4C 89 6C 24 48 48 8D 05`（在 .text 中唯一命中）。
 
-### 与 52pojie 帖子 (tid=2114393) 的差异
+### 特征码注意事项
 
-帖子针对的 2.11.3 样本特征码是 `0F B6 D8 48 89 6C 24 48 48 8D 05`（存 rbp），
-官方现行 2.11.3 x64 下载包中该指令存 **r13**（`4C 89 6C 24 48`）。
-直接套帖子特征码会 0 命中——本项目按 VA 定位后修正了特征码，一次补丁成功。
+同版本号不同 build 可能有微编译差异（寄存器选择不同，如 rbp/r13）。
+本项目针对官方现行 2.11.3 x64 下载包，特征码唯一命中；若你的样本 0 命中，
+按 `docs/analysis.md` §2 的流程（SHA-512 常量锚点 → 验签 call 上下文）重定位即可。
 
 ### 授权 JSON
 
@@ -147,13 +147,7 @@ python e2e/activate_auto.py
 ├── patch/patch_2113.py     # 特征码补丁器
 ├── e2e/activate_auto.py    # UI 自动化全流程（托盘→离线激活→粘码→验证）
 ├── docs/analysis.md        # 逆向分析记录（定位方法 + 差异点）
-└── docs/references.md      # 参考资料索引
 ```
-
-## 致谢
-
-- [52pojie tid=2114393《snipaste V2.11.3 Pro》](https://www.52pojie.cn/forum.php?mod=viewthread&tid=2114393)（yzy1226357697）
-- [博客园 DirWangK《Snipaste-2.10.8-x64 离线激活记录》](https://www.cnblogs.com/DirWang/p/19258416)
 
 ## License
 
@@ -169,5 +163,6 @@ MIT
 | SnipasteKeygen.exe | 免 Python 的注册机单文件(零依赖, 在你的机器上运行生成本机授权码) |
 | Snipaste-2.11.3-x64-patched.exe | 已打补丁的 Snipaste.exe 单文件, 替换官方包同名文件即可 |
 
-三步走: 解压 → 跑 SnipasteKeygen.exe(确认末行 alidate = 0 (OK)) → Snipaste 托盘菜单
+三步走: 解压 → 跑 \SnipasteKeygen.exe\（确认末行 \[模拟客户端 validate] = 0 (OK)\）→ Snipaste 托盘菜单
+alidate = 0 (OK)) → Snipaste 托盘菜单
 「解锁专业版 → 离线激活」粘贴授权码 → 重启。授权码绑定本机, 换机重跑 keygen。
