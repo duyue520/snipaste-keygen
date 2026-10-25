@@ -158,3 +158,16 @@ python e2e/activate_auto.py
 ## License
 
 MIT
+
+## 直接下载(免动手)
+
+到 [Releases](../../releases) 页下载任一:
+
+| 资产 | 说明 |
+|---|---|
+| `Snipaste-2.11.3-Pro-Portable.zip` | 全套便携包: 已打补丁的 Snipaste 2.11.3 + SnipasteKeygen.exe + 快速使用说明.txt, 解压即用 |
+| `SnipasteKeygen.exe` | 免 Python 的注册机单文件(零依赖, 在你的机器上运行生成本机授权码) |
+| `Snipaste-2.11.3-x64-patched.exe` | 已打补丁的 Snipaste.exe 单文件, 替换官方包同名文件即可 |
+
+三步走: 解压 → 跑 `SnipasteKeygen.exe`(确认末行 `validate = 0 (OK)`) → Snipaste 托盘菜单
+「解锁专业版 → 离线激活」粘贴授权码 → 重启。授权码绑定本机, 换机重跑 keygen。
