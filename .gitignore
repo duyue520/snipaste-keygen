@@ -1,0 +1,9 @@
+# keygen/.gitignore 之外的全局忽略
+*.zip
+*.exe
+*.exe.orig
+*.i64.7z
+license_code.txt
+__pycache__/
+*.pyc
+result*.png
