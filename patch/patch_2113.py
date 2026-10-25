@@ -3,7 +3,7 @@
 
 用法: 修改下方 EXE 路径后直接运行; 依赖 pip install pefile
 
-定位目标(52pojie tid=2114393, 本仓库按官方 2.11.3 x64 实测修正):
+定位目标(按官方 2.11.3 x64 逆向定位, 见 docs/analysis.md):
   VA 0x14024B880
   0F B6 D8          movzx ebx, al      ; call sub_140250020 (Ed25519 verify) 返回值
   4C 89 6C 24 48    mov [rsp+48], r13  ; 注意: 官方包存 r13, 帖子样本存 rbp
